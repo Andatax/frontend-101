@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-questions {
+	@apply bg-slate-900 rounded-full py-2 px-3 uppercase text-sm font-medium cursor-pointer tracking-wider;
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>FronEnd Quiz</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div>
+			<div>
+				<h1>Front End Quiz</h1>
+				<p>
+					Try to answer the following code-related questions within the
+					time limit. Keep in mind that incorrect answers will penalize
+					your score/time by 15 seconds!
+				</p>
+			</div>
+			<div
+				class="bg-gradient-to-t from-slate-100 to-slate-800 w-screen h-screen"
+			>
+				<h2></h2>
+				<div class="btn-questions w-auto h-auto"></div>
+			</div>
+			<div id="end-screen" class="hide">
+				<h2>All done!</h2>
+				<p>Your final score is <span id="final-score"></span>.</p>
+				<p>
+					Enter initials: <input type="text" id="initials" max="3" />
+					<button id="submit">Submit</button>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

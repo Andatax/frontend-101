@@ -6,29 +6,73 @@
 		<title>FronEnd Quiz</title>
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
+
 	<body>
-		<div>
+		<div
+			class="bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-slate-200 via-slate-500 to-slate-800 w-screen h-screen flex flex-wrap justify-center"
+		>
+			<header class="w-full h-20 m-5 flex justify-between">
+				<div id="scores" class="h-20">
+					<div class="btn-header w-auto h-auto shadow-lg shadow-zinc-800">
+						<h3 class="font-bold text-2xl text-slate-300">High Scores</h3>
+					</div>
+				</div>
+				<div id="timer" class="h-20">
+					<div class="btn-header w-auto h-auto shadow-lg shadow-zinc-800">
+						<h3 class="font-bold text-2xl text-slate-300">Timer:</h3>
+					</div>
+				</div>
+			</header>
+			<div class="hidden w-full h-5/6 justify-center">
+				<div
+					class="bg-gradient-to-tr from-gray-100 to-gray-300 border-neutral-200 border-2 rounded-3xl flex justify-center w-1/2 h-1/2 shadow-2xl shadow-zinc-500"
+				>
+					<div class="w-1/ flex flex-col justify-center">
+						<div class="flex justify-center">
+							<h1 class="text-slate-800 text-6xl font-bold">
+								Front End Quiz
+							</h1>
+						</div>
+						<div class="flex justify-center">
+							<p
+								class="text-slate-800 text-lg text-justify mt-10 mb-5 w-1/3"
+							>
+								Try to answer the following code-related questions
+								within the time limit. Keep in mind that incorrect
+								answers will penalize your score/time by 15 seconds!
+							</p>
+						</div>
+						<div class="flex justify-center">
+							<div
+								class="btn-questions w-28 h-auto shadow-md shadow-slate-300"
+							>
+								<h4 class="text-slate-800 font-bold">Start Quiz</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="questions" class="w-full h-5/6 flex justify-center">
+				<div
+					class="bg-gradient-to-tr from-gray-100 to-gray-300 border-neutral-200 border-2 rounded-3xl flex justify-center w-1/2 h-1/2 shadow-2xl shadow-zinc-500"
+				>
+			<div id="question-title">
+
+			</div>
+			<div id="answers">
+
+			</div>
+			</div>
+			</div>
 			<div>
-				<h1>Front End Quiz</h1>
-				<p>
-					Try to answer the following code-related questions within the
-					time limit. Keep in mind that incorrect answers will penalize
-					your score/time by 15 seconds!
-				</p>
-			</div>
-			<div
-				class="bg-gradient-to-t from-slate-100 to-slate-800 w-screen h-screen"
-			>
-				<h2></h2>
-				<div class="btn-questions w-auto h-auto"></div>
-			</div>
-			<div id="end-screen" class="hide">
-				<h2>All done!</h2>
-				<p>Your final score is <span id="final-score"></span>.</p>
-				<p>
-					Enter initials: <input type="text" id="initials" max="3" />
-					<button id="submit">Submit</button>
-				</p>
+				<div id="end-screen" class="hidden">
+					<h2>All done!</h2>
+					<p>Your final score is <span id="final-score"></span>.</p>
+					<p>
+						Enter initials: <input type="text" id="initials" max="3" />
+						<button id="submit">Submit</button>
+					</p>
+				</div>
 			</div>
 		</div>
 	</body>

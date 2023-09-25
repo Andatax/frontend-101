@@ -77,15 +77,13 @@ let questionsUpdate = () => {
 
 function nextQuestion(event) {
 	if (questions[questionsArrayIndex].answer === event.target.textContent) {
-		// event.target.classList.replace("btn-questions", "btn-questions-correct");
-		// event.target.setAttribute("style", "background-color:green !important");
-		// alert("correct");
+		event.target.classList.replace("btn-questions", "btn-questions-correct");
 	} else {
-		event.target.classList.add("bg-red-500");
+		event.target.classList.replace("btn-questions", "btn-questions-incorrect");
 	}
 	console.log(event.target.getAttribute("class"));
-	// questionsArrayIndex++;
-	setTimeout(questionsUpdate, 3000);
+	questionsArrayIndex++;
+	setTimeout(questionsUpdate, 1000);
 }
 
 startButton.onclick = startQuiz;

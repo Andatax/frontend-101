@@ -3,8 +3,8 @@ module.exports = {
 	content: ["./build/*.html"],
 	theme: {
 		extend: {
-			variants: {
+			variants: {},
 		},
+		plugins: [],
 	},
-	plugins: [],
 };

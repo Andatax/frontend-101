@@ -9,40 +9,43 @@
 
 	<body>
 		<div
-			class="bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-slate-200 via-slate-500 to-slate-800 w-screen h-screen flex flex-wrap justify-center"
+			class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-600 via-gray-700 to-gray-800 w-screen h-screen flex flex-wrap justify-center"
 		>
 			<header class="w-full h-20 m-5 flex justify-between">
 				<div id="scores" class="h-20">
-					<div class="btn-header w-auto h-auto shadow-lg shadow-zinc-800">
+					<div class="btn-header w-auto h-auto shadow-md shadow-gray-800">
 						<h3 class="font-bold text-2xl text-slate-300">High Scores</h3>
 					</div>
 				</div>
 				<div class="h-20">
-					<div class="btn-header w-auto h-auto shadow-lg shadow-zinc-800">
-						<h3 class="font-bold text-2xl text-slate-300">Timer: <span id="timer"></span></h3>
+					<div class="btn-header w-auto h-auto shadow-md shadow-gray-800">
+						<h3 class="font-bold text-2xl text-slate-300">
+							Timer : <span id="timer"> 00</span>
+						</h3>
 					</div>
 				</div>
 			</header>
 			<div id="homePage" class="flex w-full h-5/6 justify-center">
 				<div
-					class="bg-gradient-to-tr from-gray-100 to-gray-300 border-neutral-200 border-2 rounded-3xl flex justify-center w-1/2 h-1/2 shadow-2xl shadow-zinc-500"
+					class="bg-slate-400 bg-opacity-20 border-neutral-200 border-2 rounded-3xl flex justify-center w-1/2 h-1/2 shadow-xl shadow-slate-600 md:h-3/4"
 				>
 					<div class="w-1/ flex flex-col justify-center">
 						<div class="flex justify-center">
-							<h1 class="text-slate-800 text-6xl font-bold">Front End Quiz</h1>
+							<h1 class="text-slate-200 lg:text-6xl font-bold sm:text-xl md:text-4xl">
+								Front End Quiz
+							</h1>
 						</div>
 						<div class="flex justify-center">
-							<p class="text-slate-800 text-lg text-justify mt-10 mb-5 w-1/3">
+							<p
+								class="text-slate-200 lg:text-lg text-justify mt-10 mb-5 w-1/3 sm:text-xs sm:mt-5 sm:mb-2 sm:w-2/3 md:w-1/2"
+							>
 								Try to answer the following code-related questions within the time limit. Keep
 								in mind that incorrect answers will penalize your score/time by 15 seconds!
 							</p>
 						</div>
 						<div class="flex justify-center">
-							<button
-								id="startButton"
-								class="btn-questions w-28 h-auto shadow-md shadow-slate-300"
-							>
-								<h4 class="text-slate-800 font-bold">Start Quiz</h4>
+							<button id="startButton" class="btn-questions">
+								<h4 class="text-slate-200 font-bold">Start Quiz</h4>
 							</button>
 						</div>
 					</div>
@@ -50,12 +53,12 @@
 			</div>
 			<div id="questions" class="hidden w-full h-5/6 justify-center">
 				<div
-					class="bg-gradient-to-tr from-gray-100 to-gray-300 border-neutral-200 border-2 rounded-3xl flex-col justify-center w-1/2 h-1/2 shadow-2xl shadow-zinc-500"
+					class="bg-slate-400 bg-opacity-20 border-neutral-200 border-2 rounded-3xl flex-col justify-center w-1/2 h-1/2 shadow-2xl shadow-slate-600 sm:h-max"
 				>
 					<div class="flex justify-center m-5">
 						<h2
 							id="questionTitle"
-							class="w-auto h-auto flex text-slate-800 text-2xl font-bold"
+							class="w-auto h-auto flex text-slate-200 text-2xl font-bold sm:text-base"
 						></h2>
 					</div>
 					<div class="flex justify-center">

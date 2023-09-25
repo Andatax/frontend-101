@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .btn-questions {
-	@apply bg-slate-300 rounded-full py-2 px-3 uppercase text-sm font-medium cursor-pointer tracking-wider flex w-auto h-auto m-5 shadow-md shadow-slate-300;
+	@apply bg-slate-300 bg-opacity-20 rounded-full py-2 px-3 uppercase text-sm font-medium cursor-pointer tracking-wider flex w-auto h-auto m-5 shadow-md shadow-slate-700;
 }
 .btn-questions-correct {
 	@apply bg-emerald-300 rounded-full py-2 px-3 uppercase text-sm font-medium cursor-pointer tracking-wider flex w-auto h-auto m-5 shadow-md shadow-slate-300;

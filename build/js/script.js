@@ -52,8 +52,6 @@ function timerStart() {
 	timeLeft--;
 	timeElement.textContent = timeLeft;
 }
-//  ---------------------------------------------------create the button with h4 inside as string so html interpret it as HTML elements? using backquotes
-// use foreach to create a button where it will assing the classes and the content of the button will be h4 as string
 
 let questionsUpdate = () => {
 	let questionIndex = questions[questionsArrayIndex];
@@ -62,11 +60,8 @@ let questionsUpdate = () => {
 	questionIndex.options.forEach((el) => {
 		const optionBtn = document.createElement("button");
 		const btnText = document.createElement("h4");
-		optionBtn.setAttribute(
-			"class",
-			"btn-questions flex w-auto h-auto m-5 shadow-md shadow-slate-300"
-		);
-		btnText.setAttribute("class", "pointer-events-none text-slate-800 font-bold ");
+		optionBtn.setAttribute("class", "btn-questions ");
+		btnText.setAttribute("class", "pointer-events-none text-slate-200 font-bold ");
 		btnText.textContent = el;
 		optionBtn.appendChild(btnText);
 		optionBtn.addEventListener("click", nextQuestion);
@@ -76,14 +71,25 @@ let questionsUpdate = () => {
 };
 
 function nextQuestion(event) {
-	if (questions[questionsArrayIndex].answer === event.target.textContent) {
-		event.target.classList.replace("btn-questions", "btn-questions-correct");
+	if (timeLeft <= 0) {
+		endScreen(seconds);
 	} else {
-		event.target.classList.replace("btn-questions", "btn-questions-incorrect");
+		if (questions[questionsArrayIndex].answer === event.target.textContent) {
+			event.target.classList.replace("btn-questions", "btn-questions-correct");
+		} else {
+			event.target.classList.replace("btn-questions", "btn-questions-incorrect");
+			timeLeft -= 15;
+		}
+		console.log(event.target.getAttribute("class"));
+		questionsArrayIndex++;
+		setTimeout(questionsUpdate, 300);
 	}
-	console.log(event.target.getAttribute("class"));
-	questionsArrayIndex++;
-	setTimeout(questionsUpdate, 1000);
+}
+
+function endScreen(seconds) {
+	questionsDivElement.classList.replace("flex", "hidden");
+	this.clearInterval(seconds);
+	endScreenElement.classList.replace("hidden", "flex");
 }
 
 startButton.onclick = startQuiz;

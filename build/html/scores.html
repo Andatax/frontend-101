@@ -4,11 +4,49 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>High Scores</title>
+		<link rel="stylesheet" href="../css/style.css" />
 	</head>
 	<body>
-		<header></header>
-		<footer>
-			<script src="./build/js/score.js"></script>
-		</footer>
+		<div
+			class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-600 via-gray-700 to-gray-800 w-screen h-screen flex flex-wrap justify-center"
+		>
+			<header class="w-full h-20 m-5 flex justify-between">
+				<div id="scores" class="h-20">
+					<div class="btn-header w-auto h-auto shadow-md shadow-gray-800">
+						<a href="../index.html"
+							><h3 class="font-bold text-2xl text-slate-300">Home Page</h3></a
+						>
+					</div>
+				</div>
+				<div class="h-20">
+					<button class="btn-header w-auto h-auto shadow-md shadow-gray-800">
+						<h3 class="font-bold text-2xl text-slate-300">Clear HighScores</h3>
+					</button>
+				</div>
+			</header>
+			<main class="flex w-5/6 h-5/6">
+				<div id="highScores" class="flex w-full h-5/6 justify-center">
+					<div
+						class="bg-slate-400 bg-opacity-10 border-neutral-200 border-2 rounded-3xl flex justify-center lg:w-2/3 lg:h-5/6 shadow-xl shadow-slate-600 md:h-3/4"
+					>
+						<div class="w-1/2 h-full flex-col justify-center">
+							<div class="flex justify-center">
+								<h1 class="text-slate-200 my-10 lg:text-6xl font-bold sm:text-xl md:text-4xl">
+									High Scores
+								</h1>
+							</div>
+							<div class="flex justify-center">
+								<li
+									class="text-slate-200 lg:text-lg text-justify mt-10 mb-5 w-1/3 sm:text-xs sm:mt-5 sm:mb-2 sm:w-2/3 md:w-1/2"
+								></li>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer>
+				<script type="text/javascript" src="../js/score.js"></script>
+			</footer>
+		</div>
 	</body>
 </html>

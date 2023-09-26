@@ -588,6 +588,10 @@ video {
   height: auto;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -598,6 +602,10 @@ video {
 
 .w-1\/3 {
   width: 33.333333%;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
 }
 
 .w-auto {
@@ -921,6 +929,14 @@ body {
 }
 
 @media (min-width: 1300px) {
+  .lg\:h-5\/6 {
+    height: 83.333333%;
+  }
+
+  .lg\:w-2\/3 {
+    width: 66.666667%;
+  }
+
   .lg\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;

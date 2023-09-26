@@ -87,25 +87,29 @@ function endScreen() {
 	clearInterval(seconds);
 	endScreenElement.classList.replace("hidden", "flex");
 	finalScoreElement.textContent = timeLeft;
-
-	if (condition) {
-		
-	}
 }
 
+let enterKey = (event) => {
+	if (event.keyCode === 13) {
+		submitScore();
+	}
+};
+
 let saveScore = () => {
+	let savedScores = [];
 	const userScore = {
 		user: initialsElement.value.trim(),
 		score: timeLeft,
 	};
-	localStorage.setItem("userScore", JSON.stringify(userScore));
+	savedScores.push(userScore);
+	localStorage.setItem("saveScores", JSON.stringify(savedScores));
 };
 
 let submitScore = () => {
 	event.preventDefault();
 	saveScore();
 };
-
+initialsElement.onkeyup = enterKey;
 startButton.onclick = startQuiz;
 
 submitElement.onclick = submitScore;

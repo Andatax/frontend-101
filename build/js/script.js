@@ -31,19 +31,12 @@ const questions = [
 ];
 let timeLeft = questions.length * 15;
 
-//TODO: function that starts the timer and update it on the page
-//TODO: function that gets the questions
-//TODO: function that interacts with the questions and updates the timer
-//TODO: function that when the last question is answered changed to the end screen
 //TODO event on the scores button to display the scores
 
 let startQuiz = () => {
 	homeElement.classList.replace("flex", "hidden");
-
 	questionsDivElement.classList.replace("hidden", "flex");
-
 	seconds = setInterval(timerStart, 1000);
-
 	timeElement.textContent = timeLeft;
 	questionsUpdate();
 };
@@ -65,31 +58,54 @@ let questionsUpdate = () => {
 		btnText.textContent = el;
 		optionBtn.appendChild(btnText);
 		optionBtn.addEventListener("click", nextQuestion);
-
 		answersElement.appendChild(optionBtn);
 	});
 };
 
 function nextQuestion(event) {
-	if (timeLeft <= 0) {
-		endScreen(seconds);
+	if (timeLeft < 0) {
+		timeLeft = 0;
+	}
+	const btnElement = event.target.closest(".btn-questions");
+
+	if (questions[questionsArrayIndex].answer === event.target.textContent) {
+		btnElement.classList.replace("btn-questions", "btn-questions-correct");
 	} else {
-		if (questions[questionsArrayIndex].answer === event.target.textContent) {
-			event.target.classList.replace("btn-questions", "btn-questions-correct");
-		} else {
-			event.target.classList.replace("btn-questions", "btn-questions-incorrect");
-			timeLeft -= 15;
-		}
-		console.log(event.target.getAttribute("class"));
-		questionsArrayIndex++;
-		setTimeout(questionsUpdate, 300);
+		btnElement.classList.replace("btn-questions", "btn-questions-incorrect");
+		timeLeft -= 15;
+	}
+	questionsArrayIndex++;
+	setTimeout(questionsUpdate, 300);
+
+	if (timeLeft <= 0 || questionsArrayIndex === questions.length) {
+		setTimeout(endScreen, 300);
 	}
 }
 
-function endScreen(seconds) {
+function endScreen() {
 	questionsDivElement.classList.replace("flex", "hidden");
-	this.clearInterval(seconds);
+	clearInterval(seconds);
 	endScreenElement.classList.replace("hidden", "flex");
+	finalScoreElement.textContent = timeLeft;
+
+	if (condition) {
+		
+	}
 }
 
+let saveScore = () => {
+	const userScore = {
+		user: initialsElement.value.trim(),
+		score: timeLeft,
+	};
+	localStorage.setItem("userScore", JSON.stringify(userScore));
+};
+
+let submitScore = () => {
+	event.preventDefault();
+	saveScore();
+};
+
 startButton.onclick = startQuiz;
+
+submitElement.onclick = submitScore;

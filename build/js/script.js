@@ -37,14 +37,8 @@ let startQuiz = () => {
 	homeElement.classList.replace("flex", "hidden");
 	questionsDivElement.classList.replace("hidden", "flex");
 	seconds = setInterval(timerStart, 1000);
-	timeElement.textContent = timeLeft;
 	questionsUpdate();
 };
-
-function timerStart() {
-	timeLeft--;
-	timeElement.textContent = timeLeft;
-}
 
 let questionsUpdate = () => {
 	let questionIndex = questions[questionsArrayIndex];
@@ -63,7 +57,7 @@ let questionsUpdate = () => {
 };
 
 function nextQuestion(event) {
-	if (timeLeft < 0) {
+	if (timeLeft <= 0) {
 		timeLeft = 0;
 	}
 	const btnElement = event.target.closest(".btn-questions");
@@ -80,13 +74,23 @@ function nextQuestion(event) {
 	if (timeLeft <= 0 || questionsArrayIndex === questions.length) {
 		setTimeout(endScreen, 300);
 	}
+	finalScoreElement.textContent = timeLeft - 15;
+	timeElement.textContent = timeLeft;
+}
+function timerStart() {
+	timeLeft--;
+	timeElement.textContent = timeLeft;
 }
 
 function endScreen() {
+	if (timeLeft < 0) {
+		timeLeft = 0;
+	}
 	questionsDivElement.classList.replace("flex", "hidden");
 	clearInterval(seconds);
 	endScreenElement.classList.replace("hidden", "flex");
 	finalScoreElement.textContent = timeLeft;
+	timeElement.textContent = timeLeft;
 }
 
 let enterKey = (event) => {
@@ -96,15 +100,16 @@ let enterKey = (event) => {
 };
 
 let saveScore = () => {
-	let savedScores = [];
+	let savedScores = JSON.parse(window.localStorage.getItem("saveScores")) || [];
 	const userScore = {
 		user: initialsElement.value.trim(),
 		score: timeLeft,
 	};
 	savedScores.push(userScore);
-	localStorage.setItem("saveScores", JSON.stringify(savedScores));
-};
+	window.localStorage.setItem("saveScores", JSON.stringify(savedScores));
 
+	window.location.href = "./html/scores.html";
+};
 let submitScore = () => {
 	event.preventDefault();
 	saveScore();

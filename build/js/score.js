@@ -1,6 +1,7 @@
 const orderedlistElement = document.getElementById("highScoresList");
 const score = JSON.parse(localStorage.getItem("saveScores"));
 const clearStorageElement = document.getElementById("clearStorage");
+// ------------------------------------------------------function that displays the scores inside the DOM--------------------------------------------------------------
 let displayScore = () => {
 	console.log(score);
 
@@ -18,7 +19,7 @@ let displayScore = () => {
 		});
 	}
 };
-
+// ---------------------------------------function that clears the scores from local storage--------------------------------------------------------------
 const clearScoresLocalStorage = () => {
 	window.localStorage.removeItem("saveScores");
 	window.location.reload();

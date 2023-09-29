@@ -1,3 +1,4 @@
+// -------------------------------------------------------------------Get Elements from DOM----------------------------------------------
 const timeElement = document.getElementById("timer");
 const scoresElement = document.getElementById("scores");
 const homeElement = document.getElementById("homePage");
@@ -9,37 +10,45 @@ const finalScoreElement = document.getElementById("finalScore");
 const initialsElement = document.getElementById("initials");
 const submitElement = document.getElementById("submit");
 const startButtonElement = document.getElementById("startButton");
-
+// -----------------------------------------------------set global variables that will interact with the timer and questionIndex----------------------------------------------
 let seconds;
 let questionsArrayIndex = 0;
+// ----------------------------------------------Create an array filled with objects for each question---------------------------------------------------
 const questions = [
 	{
-		question: "Commonly used data types DO NOT include:",
-		options: ["strings", "booleans", "alerts", "numbers"],
-		answer: "alerts",
+		question: "Which of the following libraries/frameworks are used CSS?",
+		options: ["TailwindCSS", "Bootstrap", "Materialize", "All of the above"],
+		answer: "All of the above",
 	},
 	{
-		question: "The condition in an if / else statement is enclosed within ____.",
-		options: ["quotes", "curly brackets", "parentheses", "square brackets"],
-		answer: "parentheses",
+		question: "Which framework is not used for JavaScript?",
+		options: ["React", "Django", "VueJS", "AngularJS"],
+		answer: "Django",
 	},
 	{
-		question: "Arrays in JavaScript can be used to store ____.",
-		options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-		answer: "all of the above",
+		question: "What is the correct way to add an event listener to a button in JavaScript?",
+		options: [
+			"button.addEventListener('click', myFunction());",
+			"button.on('click', myFunction());",
+			"button.onClick = myFunction;",
+			"button.onclick = myFunction;",
+		],
+		answer: "button.onclick = myFunction;",
 	},
 ];
+
+// ---------------------------------------Expression to track time/score depending on the number of questions----------------------------------------------------------
+
 let timeLeft = questions.length * 15;
 
-//TODO event on the scores button to display the scores
-
+// -------------------------------------------------------------------Function that starts the quiz--------------------------------------------------------------
 let startQuiz = () => {
 	homeElement.classList.replace("flex", "hidden");
 	questionsDivElement.classList.replace("hidden", "flex");
 	seconds = setInterval(timerStart, 1000);
 	questionsUpdate();
 };
-
+// -------------------------------------------------------------------Function that updates the questions--------------------------------------------------------------
 let questionsUpdate = () => {
 	let questionIndex = questions[questionsArrayIndex];
 	questionTitleElement.textContent = questionIndex.question;
@@ -55,7 +64,8 @@ let questionsUpdate = () => {
 		answersElement.appendChild(optionBtn);
 	});
 };
-
+console.log(questionsUpdate);
+// -------------------------Function that checks the answers and updates the questions--------------------------------------------------------------
 function nextQuestion(event) {
 	if (timeLeft <= 0) {
 		timeLeft = 0;
@@ -77,11 +87,13 @@ function nextQuestion(event) {
 	finalScoreElement.textContent = timeLeft - 15;
 	timeElement.textContent = timeLeft;
 }
+
+// -------------------------------------------------------------------Function that starts the timer--------------------------------------------------------------
 function timerStart() {
 	timeLeft--;
 	timeElement.textContent = timeLeft;
 }
-
+// -------------------------------------------------------------------Function that ends the quiz--------------------------------------------------------------
 function endScreen() {
 	if (timeLeft < 0) {
 		timeLeft = 0;
@@ -92,13 +104,13 @@ function endScreen() {
 	finalScoreElement.textContent = timeLeft;
 	timeElement.textContent = timeLeft;
 }
-
+// -------------------------------------------------------------------Function checks for Enterkey when to submit the score--------------------------------------------------------------
 let enterKey = (event) => {
 	if (event.keyCode === 13) {
 		submitScore();
 	}
 };
-
+// --------------------------------------------------------function that saves the score--------------------------------------------------------------
 let saveScore = () => {
 	let savedScores = JSON.parse(window.localStorage.getItem("saveScores")) || [];
 	const userScore = {
@@ -110,9 +122,12 @@ let saveScore = () => {
 
 	window.location.href = "./html/scores.html";
 };
+
+// -------------------------------------------------------------------Function that submits the score--------------------------------------------------------------
 let submitScore = () => {
 	event.preventDefault();
 	saveScore();
+	console.log(questionsUpdate);
 };
 initialsElement.onkeyup = enterKey;
 startButton.onclick = startQuiz;

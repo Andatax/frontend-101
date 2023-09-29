@@ -20,4 +20,4 @@ I was able to get my hands on multiple HTML interactions, as well as working wit
 
 ## Screenshot of my Quiz App
 
-![Web Quiz page](./build/imgs/SS01.png)
+![Web Quiz page](./docs/imgs/SS01.png)
